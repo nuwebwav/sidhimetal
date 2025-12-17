@@ -5,9 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/Layout";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,11 +19,65 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSending(true);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS environment variables are missing.");
+      toast({
+        title: "Configuration Error",
+        description: "EmailJS keys are missing in .env file. Please check the setup guide.",
+        variant: "destructive"
+      });
+      setIsSending(false);
+      return;
+    }
+
+
+
+    // Use keys from map: to_name, from_name, message, reply_to, etc.
+    // We send multiple variations to ensure it matches the user's template variables
+    const templateParams = {
+      // Standard keys often used in templates
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      subject: formData.subject,
+
+      // Explicit keys for "User gets email" functionality
+      to_email: formData.email,
+      from_name: formData.name,
+      from_email: formData.email,
+      reply_to: formData.email,
+    };
+
+
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then(
+        () => {
+          toast({
+            title: "Message Sent!",
+            description: "We'll get back to you within 24 hours.",
+          });
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          console.error('FAILED...', error);
+          toast({
+            title: "Error Sending Message",
+            description: `Error: ${error.text || "Unknown error"}. Check console for details.`,
+            variant: "destructive"
+          });
+        }
+      )
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   return (
@@ -51,6 +107,7 @@ const Contact = () => {
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">Name</label>
                     <Input
+                      name="user_name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -61,6 +118,7 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-foreground mb-2">Email</label>
                     <Input
                       type="email"
+                      name="user_email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -71,6 +129,7 @@ const Contact = () => {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Subject</label>
                   <Input
+                    name="subject"
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -80,6 +139,7 @@ const Contact = () => {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Message</label>
                   <Textarea
+                    name="message"
                     required
                     rows={5}
                     value={formData.message}
@@ -87,8 +147,12 @@ const Contact = () => {
                     placeholder="Your message..."
                   />
                 </div>
-                <Button type="submit" className="w-full bg-accent hover:bg-red-accent-dark text-accent-foreground">
-                  Send Message
+                <Button
+                  type="submit"
+                  className="w-full bg-accent hover:bg-red-accent-dark text-accent-foreground"
+                  disabled={isSending}
+                >
+                  {isSending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>
