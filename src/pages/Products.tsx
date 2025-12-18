@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 
 import roundBarsImg from "@/assets/products/round-bars.jpg";
 import wireRodsImg from "@/assets/products/wire-rods.jpg";
-import pipesTubesImg from "@/assets/products/pipes-tubes.jpg";
+import pipesTubesImg from "@/assets/products/pipes-tubes.jpeg";
 import sheetsPlatesImg from "@/assets/products/sheets-plates.jpg";
 import anglesImg from "@/assets/products/angles.jpg";
 import channelsImg from "@/assets/products/channels.jpg";
@@ -121,7 +121,7 @@ const Products = () => {
               Custom Solutions
             </h2>
             <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              Need products with specific dimensions, grades, or finishes? We offer 
+              Need products with specific dimensions, grades, or finishes? We offer
               customized metal solutions tailored to your exact requirements.
             </p>
             <Button asChild className="bg-accent hover:bg-red-accent-dark text-accent-foreground">

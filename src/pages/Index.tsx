@@ -56,11 +56,11 @@ const Index = () => {
               Trusted Metal Solutions Since Day One
             </p>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight animate-slide-up">
-              Your Trusted Partner for Premium Metal Products
+              Trusted Importer, Stockist & Supplier of Industrial Metal Raw Materials
             </h1>
             <p className="text-primary-foreground/90 text-lg mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
               ASTSIDDHI METAL is a leading Stockist, Manufacturer, and Supplier of
-              high-quality Stainless Steel, Carbon Steel, and Non-Ferrous products.
+              high-quality Stainless Steel, Mild Steel, Carbon Steel, Sheets, Plates, Coils, Pipes, Rods & Flanges.
             </p>
             <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
               <Button asChild size="lg" className="bg-accent hover:bg-red-accent-dark text-accent-foreground">

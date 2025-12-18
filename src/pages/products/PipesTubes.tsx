@@ -1,5 +1,5 @@
 import ProductPageTemplate from "@/components/ProductPageTemplate";
-import heroImage from "@/assets/products/pipes-tubes.jpg";
+import heroImage from "@/assets/products/pipes-tubes.jpeg";
 
 const PipesTubes = () => {
   return (

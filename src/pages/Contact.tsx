@@ -38,23 +38,29 @@ const Contact = () => {
 
 
 
-    // Use keys from map: to_name, from_name, message, reply_to, etc.
-    // We send multiple variations to ensure it matches the user's template variables
+    // Map form data to template variables based on the valid screenshot
     const templateParams = {
-      // Standard keys often used in templates
+      // Standard keys
       name: formData.name,
-      email: formData.email,
-      message: formData.message,
-      subject: formData.subject,
+      email: formData.email, // Sender's email (for Reply-To)
 
-      // Explicit keys for "User gets email" functionality
-      to_email: formData.email,
-      from_name: formData.name,
-      from_email: formData.email,
+      // Mapping for the template screenshot
+      title: formData.subject, // Maps to {{title}} in the subject line
+
+      // Enriched message body to ensure all info is visible even if template is simple
+      message: `
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+      `.trim(),
+
+      // Additional variables that might be useful if configured in dashboard
+      to_email: "nuwebwavecoin@gmail.com", // The owner's email
       reply_to: formData.email,
     };
-
-
 
     emailjs
       .send(serviceId, templateId, templateParams, publicKey)
@@ -62,7 +68,7 @@ const Contact = () => {
         () => {
           toast({
             title: "Message Sent!",
-            description: "We'll get back to you within 24 hours.",
+            description: "We have received your message and will get back to you at " + formData.email,
           });
           setFormData({ name: "", email: "", subject: "", message: "" });
         },
