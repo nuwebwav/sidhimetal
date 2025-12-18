@@ -49,7 +49,7 @@ const Index = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         </div>
-        
+
         <div className="container relative z-10 py-20">
           <div className="max-w-2xl">
             <p className="text-accent font-semibold mb-4 animate-fade-in">
@@ -59,7 +59,7 @@ const Index = () => {
               Your Trusted Partner for Premium Metal Products
             </h1>
             <p className="text-primary-foreground/90 text-lg mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-              ASTSIDDHI METAL is a leading Stockist, Manufacturer, and Supplier of 
+              ASTSIDDHI METAL is a leading Stockist, Manufacturer, and Supplier of
               high-quality Stainless Steel, Carbon Steel, and Non-Ferrous products.
             </p>
             <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
@@ -84,11 +84,11 @@ const Index = () => {
               Why Industries Trust Us
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              With years of expertise in the metal industry, we deliver products that 
+              With years of expertise in the metal industry, we deliver products that
               meet the highest quality standards and client specifications.
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <div
@@ -120,8 +120,8 @@ const Index = () => {
                 Why Choose <span className="text-accent">ASTSIDDHI METAL</span>?
               </h2>
               <p className="text-muted-foreground mb-8">
-                We are committed to delivering excellence in every order. Our extensive 
-                inventory, competitive pricing, and reliable service make us the preferred 
+                We are committed to delivering excellence in every order. Our extensive
+                inventory, competitive pricing, and reliable service make us the preferred
                 choice for businesses across industries.
               </p>
               <ul className="grid sm:grid-cols-2 gap-4">
@@ -143,7 +143,7 @@ const Index = () => {
                   Ready to discuss your requirements? Contact us today for a free consultation.
                 </p>
                 <div className="space-y-3 text-sm">
-                  <p>📞 +91 9820521850 / +91 9987230567</p>
+                  <p>📞 +91 9820521850 / +91 9987233056</p>
                   <p>📧 astsiddhimetal@gmail.com</p>
                   <p>📍 Shop No 106 A, 2nd Kumbharwada, Mumbai 400004</p>
                 </div>
@@ -163,7 +163,7 @@ const Index = () => {
             Ready to Source Quality Metal Products?
           </h2>
           <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Whether you need standard products or custom solutions, we're here to help. 
+            Whether you need standard products or custom solutions, we're here to help.
             Get in touch with our team today.
           </p>
           <Button asChild size="lg" className="bg-accent hover:bg-red-accent-dark text-accent-foreground">
