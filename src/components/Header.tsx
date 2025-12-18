@@ -28,7 +28,7 @@ const Header = () => {
             </a>
             <a href="tel:+919987230567" className="hidden sm:flex items-center gap-2 hover:text-accent transition-colors">
               <Phone className="w-4 h-4" />
-              +91 9987230567
+              +91 9987233056
             </a>
           </div>
           <a href="mailto:astsiddhimetal@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">

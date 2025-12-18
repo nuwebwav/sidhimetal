@@ -183,7 +183,7 @@ const Contact = () => {
                     <h3 className="font-semibold text-foreground mb-1">Phone</h3>
                     <p className="text-muted-foreground">
                       +91 9820521850<br />
-                      +91 9987230567<br />
+                      +91 9987233056<br />
                       022-67437458 / 66109535
                     </p>
                   </div>
